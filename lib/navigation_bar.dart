@@ -1,5 +1,6 @@
 
 import 'package:e_comm_app/features/authentication/controllers/homepage_controller.dart';
+import 'package:e_comm_app/features/shop/screens/favorite.dart';
 import 'package:e_comm_app/features/shop/screens/home.dart';
 import 'package:e_comm_app/features/shop/screens/profile_settings.dart';
 import 'package:e_comm_app/features/shop/screens/store.dart';
@@ -60,7 +61,7 @@ class NavigationController extends GetxController {
   final screen = [
     const HomeScreen(),
     const Store(),
-    Container(color: Colors.green),
+    const FavoriteScreen(),
     const ProfileSetting()
   ];
 }

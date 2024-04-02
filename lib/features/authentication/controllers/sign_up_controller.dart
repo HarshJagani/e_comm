@@ -59,7 +59,7 @@ class SignupController extends GetxController {
       //Show Success Message
       ECLoader.successSnackBar(title: 'Success!', message: "Your account has been created. Varify email to continue.");
 
-      //Move to varify email screen.
+      //Move to verify email screen.
       Get.to(() => const EmailVerification());
       
     } catch (e) {

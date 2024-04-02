@@ -16,7 +16,7 @@ class ProductList {
     },
     {
       'title': 'Adidas White Snekers',
-      'price': '100',
+      'price': '20',
       'brand': 'Adidas',
       'image': ECImageString.productAR3,
     },

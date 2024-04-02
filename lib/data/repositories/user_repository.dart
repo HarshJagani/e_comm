@@ -13,8 +13,9 @@ Future<void> saveUserRecord(UserModel user) async {
   await _db.collection('Users').doc(user.id).set(user.toJson());
 }
 
-Future<void> uploadProductData(ProductModel product) async {
-  await _db.collection('Products').doc(product.id).set(product.toJson());
-}
+ Future<void> uploadProduct(ProductModel productModel) async {
+   _db.collection('products').doc().set(productModel.toJson());
+ }
+
 
 }

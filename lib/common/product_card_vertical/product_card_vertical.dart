@@ -9,7 +9,6 @@ import 'package:e_comm_app/utils/helpers/helper_function.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import '../../utils/constants/size.dart';
 
 class ECProductCardVertical extends StatelessWidget {

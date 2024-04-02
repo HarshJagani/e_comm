@@ -1,21 +1,21 @@
 class ProductModel {
   String brand;
-  int price;
+  String? price;
   List<dynamic> size;
-  List<String> images;
+  List<String>? images;
   bool? isFeatured;
-  String? catagory;
-  int stock;
- int? salePrize;
+  String category;
+  String? stock;
+ String? salePrize;
 
   
 
  ProductModel({
 required this.brand,
-required this.stock,
-required this.price,
-required this.images,
-this.catagory,
+ this.stock,
+ this.price,
+ this.images,
+required this.category,
 this.isFeatured,
 this.salePrize,
 required this.size
@@ -29,10 +29,12 @@ required this.size
       "Price": price,
       "Size" : size ,
       "Images": images,
-      "Isfeatured": isFeatured,
-      "Category": catagory,
+      "isFeatured": isFeatured,
+      "Category": category,
       "Stock": stock,
        "Sale Price": salePrize
     };
   }
+
+  
 }
