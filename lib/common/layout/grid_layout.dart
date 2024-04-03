@@ -7,11 +7,11 @@ class ECGridLayout extends StatelessWidget {
     super.key,
     required this.itemBuilder,
     required this.itemCount,
-    this.mainAxisIntent = 288,
+    required this.mainAxisIntent,
   });
   final Widget? Function(BuildContext, int) itemBuilder;
   final int itemCount;
-  final double? mainAxisIntent;
+  final double mainAxisIntent;
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -21,7 +21,7 @@ class ECGridLayout extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          mainAxisExtent: mainAxisIntent,
+         mainAxisExtent: mainAxisIntent,
           mainAxisSpacing: ECSize.md,
           crossAxisSpacing: ECSize.md,
         ),

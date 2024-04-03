@@ -52,37 +52,34 @@ class ECProductCardVertical extends StatelessWidget {
                       applyImageRadius: true,
                       fit: BoxFit.cover),
                 ),
-                const SizedBox(height: 5),
+              //  const SizedBox(height: 5),
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
                   child: ECProductTitle(productTitle: title),
                 ),
-                const SizedBox(height: 5),
+
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
                   child: ECBrandName(brandName: brand),
                 ),
-                const SizedBox(height: 5),
+              // const SizedBox(height: 5),
                Row(
+                 crossAxisAlignment: CrossAxisAlignment.center,
                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                  children: [
                    Padding(
                      padding: const EdgeInsets.only(left:8.0),
                      child: ECProductPrice(price: price),
                    ),
-                   ECRoundedContainer(
-                     backgroundColor: Colors.transparent,
-                     radius: 100,
-                     child: Obx(
-                           () => IconButton(
-                         onPressed: () {
-                           favoriteIconClicked.toggle();
-                         },
-                             icon: favoriteIconClicked.isTrue
-                                 ? const Icon(CupertinoIcons.heart_fill)
-                                 : const Icon(CupertinoIcons.heart),
-                             color: favoriteIconClicked.isTrue ? Colors.red : null,
-                       ),
+                   Obx(
+                         () => IconButton(
+                       onPressed: () {
+                         favoriteIconClicked.toggle();
+                       },
+                           icon: favoriteIconClicked.isTrue
+                               ? const Icon(CupertinoIcons.heart_fill)
+                               : const Icon(CupertinoIcons.heart),
+                           color: favoriteIconClicked.isTrue ? Colors.red : null,
                      ),
                    ),
                  ],

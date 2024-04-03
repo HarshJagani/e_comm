@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      height: ECHelperFunctions.screenHeight() * 0.36,
+                      height: 300,
                       decoration: const BoxDecoration(
                           gradient: LinearGradient(
                             begin: Alignment.topLeft,
@@ -50,6 +50,7 @@ class HomeScreen extends StatelessWidget {
                     Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: ECGridLayout(
+                            mainAxisIntent: 300,
                             itemBuilder: (_, index) {
                               final product = ProductList().products[index];
                               return ECProductCardVertical(

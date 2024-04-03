@@ -1,3 +1,7 @@
+import 'dart:ffi';
+
+import 'package:e_comm_app/utils/device/device_utilities.dart';
+
 class ECSize {
   ECSize._();
 
@@ -24,6 +28,7 @@ class ECSize {
   static double buttonHeight = 18;
   static double buttonRadius = 12;
   static double buttonWidth = 120;
+
 
   //Default spacing between sections
   static const double defaultSpace = 24;

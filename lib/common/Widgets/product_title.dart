@@ -13,9 +13,12 @@ class ECProductTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(productTitle,
-        style: Theme.of(context).textTheme.bodyLarge,
-        textAlign: textAlign,
-        maxLines: maxLines);
+    return Text(
+      productTitle,
+      style: Theme.of(context).textTheme.bodyLarge,
+      textAlign: textAlign,
+      maxLines: maxLines,
+      overflow: TextOverflow.ellipsis,
+    );
   }
 }
