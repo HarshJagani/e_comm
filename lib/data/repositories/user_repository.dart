@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_comm_app/features/authentication/models/productmodel.dart';
 import 'package:e_comm_app/features/authentication/models/usermodel.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 class UserRepository extends GetxController {

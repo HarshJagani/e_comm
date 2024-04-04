@@ -19,7 +19,7 @@ class ProductUploadController extends GetxController {
   RxList<XFile> selectedImages = <XFile>[].obs;
   RxList<String> imagesUrlList = <String>[].obs;
   final ImagePicker _picker = ImagePicker();
-  RxBool _uploading = false.obs;
+  final RxBool _uploading = false.obs;
   bool get uploading => _uploading.value;
 
   RxList<RxMap<String, dynamic>> sizeList = [

@@ -1,6 +1,4 @@
-import 'dart:ffi';
 
-import 'package:e_comm_app/utils/device/device_utilities.dart';
 
 class ECSize {
   ECSize._();

@@ -1,3 +1,5 @@
+import 'package:e_comm_app/features/shop/screens/setting_screem.dart';
+import 'package:e_comm_app/navigation_bar.dart';
 import 'package:e_comm_app/utils/constants/size.dart';
 import 'package:e_comm_app/utils/device/device_utilities.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +26,7 @@ class ECAppBar extends StatelessWidget implements PreferredSizeWidget {
     return Padding(padding: const EdgeInsets.symmetric(horizontal: ECSize.md),
     child: AppBar(
       automaticallyImplyLeading: false,
-      leading: showBackArrow ? IconButton(onPressed: () => Get.back(), icon: const Icon(Icons.arrow_back))
+      leading: showBackArrow ? IconButton(onPressed: leadingOnPressed, icon: const Icon(Icons.arrow_back))
       : leadingIcon != null ? IconButton(onPressed: leadingOnPressed, icon: Icon(leadingIcon)) : null,
       title: title,
       actions: actions,

@@ -51,7 +51,9 @@ class SignupController extends GetxController {
           userName: username.text.trim(),
           phoneNumber: phonenumber.text.trim(),
           emailAddress:email.text.trim(),
-          profilePicture: '');
+          profilePicture: '',
+          
+          );
 
       final userRepository = Get.put(UserRepository());
       userRepository.saveUserRecord(newUser);

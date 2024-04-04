@@ -1,8 +1,9 @@
 
 import 'package:e_comm_app/features/authentication/controllers/homepage_controller.dart';
+import 'package:e_comm_app/features/authentication/screens/signup/sign_up.dart';
 import 'package:e_comm_app/features/shop/screens/favorite.dart';
 import 'package:e_comm_app/features/shop/screens/home.dart';
-import 'package:e_comm_app/features/shop/screens/profile_settings.dart';
+import 'package:e_comm_app/features/shop/screens/setting_screem.dart';
 import 'package:e_comm_app/features/shop/screens/store.dart';
 import 'package:e_comm_app/utils/helpers/helper_function.dart';
 import 'package:flutter/cupertino.dart';
@@ -61,7 +62,7 @@ class NavigationController extends GetxController {
   final screen = [
     const HomeScreen(),
     const Store(),
-    const FavoriteScreen(),
-    const ProfileSetting()
+    const SignUpScreen(),
+    const SettingScreen()
   ];
 }

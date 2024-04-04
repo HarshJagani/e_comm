@@ -1,8 +1,9 @@
 import 'package:e_comm_app/common/Widgets/appbar/appbar.dart';
 import 'package:e_comm_app/common/Widgets/settingmenu_tile.dart';
+import 'package:e_comm_app/features/shop/screens/profile_settings.dart';
 import 'package:e_comm_app/utils/constants/image_strings.dart';
-import 'package:e_comm_app/utils/constants/size.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class SettingScreen extends StatelessWidget {
@@ -29,7 +30,10 @@ class SettingScreen extends StatelessWidget {
             children: [
               ECAppBar(
                 title: Text('Account',
-                    style: Theme.of(context).textTheme.headlineMedium),
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineMedium!
+                        .apply(color: Colors.white)),
               ),
               ListTile(
                 leading: CircleAvatar(
@@ -46,7 +50,10 @@ class SettingScreen extends StatelessWidget {
                         .labelMedium!
                         .apply(color: Colors.white.withOpacity(0.9))),
                 trailing: IconButton(
-                    onPressed: () {}, icon: const Icon(Iconsax.edit)),
+                    onPressed: () {
+                      Get.off(() => const ProfileScreen());
+                    },
+                    icon: const Icon(Iconsax.edit,color: Colors.white)),
               ),
             ],
           ),
@@ -95,7 +102,7 @@ class SettingScreen extends StatelessWidget {
                       subTitle: 'Manage data and connected accounts'),
                   const SizedBox(height: 7),
                   SizedBox(
-                    width: double.infinity,
+                      width: double.infinity,
                       child: OutlinedButton(
                           onPressed: () {}, child: const Text('Logout')))
                 ],

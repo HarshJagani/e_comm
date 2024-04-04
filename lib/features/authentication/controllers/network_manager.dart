@@ -23,7 +23,7 @@ class NetworkManager extends GetxController {
   Future<void> _updateConnectionStatus(ConnectivityResult result) async {
     _connectionStatus.value = result;
     if (_connectionStatus.value == ConnectivityResult.none) {
-      ECLoader.warningSnackBar(title: 'No Internet Connection');
+      ECLoader.warningSnackBar(title: 'No Internet Connection',message: 'Please check your internet connection');
     }
   }
 

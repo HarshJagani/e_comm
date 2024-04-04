@@ -1,5 +1,3 @@
-import 'package:e_comm_app/common/Widgets/appbar/appbar.dart';
-import 'package:e_comm_app/features/shop/screens/home.dart';
 import 'package:e_comm_app/navigation_bar.dart';
 import 'package:e_comm_app/utils/constants/colors.dart';
 import 'package:e_comm_app/utils/helpers/helper_function.dart';

@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 import '../../utils/constants/size.dart';
 
 class ECProductCardVertical extends StatelessWidget {
-  ECProductCardVertical(
+const  ECProductCardVertical(
       {super.key,
         required this.imageName,
         required this.title,
@@ -20,11 +20,11 @@ class ECProductCardVertical extends StatelessWidget {
         required this.price,
         this.isDiscounted = false
       });
-    String imageName;
-    String title;
-    String brand;
-    String price;
-    bool isDiscounted;
+  final String imageName;
+  final String title;
+  final String brand;
+  final String price;
+  final bool isDiscounted;
 
   @override
   Widget build(BuildContext context) {

@@ -10,8 +10,8 @@ class ECImageString {
   static const verifyemail = 'assets/images/verification/bubble-gum-digital-security-with-password-protected-email.gif';
   static const done = 'assets/images/verification/taxi-handshake-1.gif';
   static const loadanimation = 'assets/loadleave-leave.gif';
-  static const promoBanner2 = 'assets/images/banner/adidas.jpg';
-  static const promoBanner1 = 'assets/images/banner/adiad_new_arrivals.jpg';
+  static const promoBanner2 = 'assets/images/banner/Picsart_24-03-30_19-37-00-768.jpg';
+  static const promoBanner1 = 'assets/images/banner/Picsart_24-03-30_01-28-29-766.jpg';
   static const promoBanner3 = 'assets/images/banner/Adidas-feat-25-Nov-2021.jpg';
   static const product1 = 'assets/images/products/A-1.jpg';
   static const product11 = 'assets/images/products/A-11.jpg';
