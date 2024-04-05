@@ -21,7 +21,6 @@ class UserModel {
       this.name});
 
 //Convert model to Json structure for storing data in firebase.
-
   Map<String, dynamic> toJson() {
     return {
       'FirstName': firstName,
@@ -34,18 +33,33 @@ class UserModel {
     };
   }
 
+  // Static function to create an empty user model.
+  static UserModel empty() => UserModel(
+      id: '',
+      firstName: '',
+      lastName: '',
+      userName: '',
+      phoneNumber: '',
+      profilePicture: '',
+      emailAddress: '');
+
+// Facrory method to creat UserModel from a firebase document snapshot.
   factory UserModel.fromSnapshot(
       DocumentSnapshot<Map<String, dynamic>> document) {
-    final data = document.data()!;
-    return UserModel(
-      id: document.id,
-      firstName: data['FirstName'],
-      lastName: data['LastName'],
-      emailAddress: data['EmailAddress'],
-      userName: data["UserName"],
-      phoneNumber: data["PhoneNumber"],
-      profilePicture: data["ProfilePicture"] ?? "",
-      name: data['Name'],
-    );
+    if (document.data() != null) {
+      final data = document.data()!;
+      return UserModel(
+        id: document.id,
+        firstName: data['FirstName'] ?? '',
+        lastName: data['LastName'] ?? '',
+        emailAddress: data['EmailAddress'],
+        userName: data["UserName"] ?? '',
+        phoneNumber: data["PhoneNumber"] ?? '',
+        profilePicture: data["ProfilePicture"] ?? "",
+        name: data['Name'] ?? '',
+      );
+    } else {
+      return UserModel.empty();
+    }
   }
 }

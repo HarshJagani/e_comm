@@ -10,6 +10,7 @@ class ECValidator {
       return null;
     }
   }
+
 // Regular expression for basic email validation
   static String? validatePassword(String? value) {
     if (value == null || value.length < 8) {
@@ -22,28 +23,29 @@ class ECValidator {
     if (!value.contains(RegExp('[1-9]'))) {
       return 'Password must contain at least one a number.';
     }
-    if (!value.contains( RegExp(r'[\.\/\-\!\,\:\;\(\)\{\}\[\]\?\*\&\@\#\$\%]'))) {
+    if (!value
+        .contains(RegExp(r'[\.\/\-\!\,\:\;\(\)\{\}\[\]\?\*\&\@\#\$\%]'))) {
       return 'Password must contain at least one symbol';
+    }
+    if (!value.contains(RegExp(r'[a-z]'))) {
+      return 'Password must contain at least one lowercase letter.';
+    }
+    return null;
   }
-  if(!value.contains(RegExp(r'[a-z]'))){
-    return 'Password must contain at least one lowercase letter.';
-  }
-  return null;
-}
- //Validation for empty fields.
-static String? validateEmptytext(String? fieldNmae, String? value){
-  if(value == null || value.isEmpty){
-    return '$fieldNmae is reqired.';
-  }
-  return null;
-}
 
-static String? validatenumber(String? value){
-    if(!RegExp(r'[0-9]').hasMatch(value!) && value.length != 10){
-       return 'Please enter the phone number in correct format';
-     }else{
+  //Validation for empty fields.
+  static String? validateEmptytext(String? fieldNmae, String? value) {
+    if (value == null || value.isEmpty) {
+      return '$fieldNmae is reqired.';
+    }
+    return null;
+  }
+
+  static String? validatenumber(String? value) {
+    if (!RegExp(r'[0-9]').hasMatch(value!) && value.length != 10) {
+      return 'Please enter the phone number in correct format';
+    } else {
       return null;
-   
     }
   }
 }

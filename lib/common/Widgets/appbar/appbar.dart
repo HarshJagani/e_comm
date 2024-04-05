@@ -1,9 +1,6 @@
-import 'package:e_comm_app/features/shop/screens/setting_screem.dart';
-import 'package:e_comm_app/navigation_bar.dart';
 import 'package:e_comm_app/utils/constants/size.dart';
 import 'package:e_comm_app/utils/device/device_utilities.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class ECAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ECAppBar({

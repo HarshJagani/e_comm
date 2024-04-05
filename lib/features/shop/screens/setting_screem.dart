@@ -1,5 +1,6 @@
 import 'package:e_comm_app/common/Widgets/appbar/appbar.dart';
 import 'package:e_comm_app/common/Widgets/settingmenu_tile.dart';
+import 'package:e_comm_app/features/personalization/controllers/user_controller.dart';
 import 'package:e_comm_app/features/shop/screens/profile_settings.dart';
 import 'package:e_comm_app/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ class SettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Scaffold(
       body: Stack(
         children: [
@@ -39,12 +41,12 @@ class SettingScreen extends StatelessWidget {
                 leading: CircleAvatar(
                   child: Image.asset(ECImageString.faceBookLogo),
                 ),
-                title: Text('Harsh Jagani',
+                title: Text(controller.user.value.name??'',
                     style: Theme.of(context)
                         .textTheme
                         .headlineSmall!
                         .apply(color: Colors.white)),
-                subtitle: Text('harshjagani@gmail.com',
+                subtitle: Text(controller.user.value.emailAddress,
                     style: Theme.of(context)
                         .textTheme
                         .labelMedium!
