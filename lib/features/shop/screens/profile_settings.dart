@@ -1,12 +1,13 @@
 import 'package:e_comm_app/common/Widgets/appbar/appbar.dart';
 import 'package:e_comm_app/common/Widgets/profile_tile.dart';
-import 'package:e_comm_app/features/personalization/controllers/user_controller.dart';
+import 'package:e_comm_app/features/authentication/models/usermodel.dart';
 import 'package:e_comm_app/features/shop/controllers/update_profile_controller.dart';
 import 'package:e_comm_app/navigation_bar.dart';
 import 'package:e_comm_app/utils/constants/colors.dart';
 import 'package:e_comm_app/utils/constants/image_strings.dart';
 import 'package:e_comm_app/utils/constants/size.dart';
 import 'package:e_comm_app/utils/validators/validation.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,8 +16,8 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = UserController.instance;
     final updateController = Get.put(UpdateProfileController());
+    final auth = FirebaseAuth.instance;
     return Scaffold(
       appBar: ECAppBar(
         showBackArrow: true,
@@ -48,17 +49,20 @@ class ProfileScreen extends StatelessWidget {
                     style: Theme.of(context).textTheme.headlineSmall),
                 const SizedBox(height: ECSize.md),
                 ProfileTile(
-                  validator: (value) => ECValidator.validateEmptytext('First Name', value),
+                  validator: (value) =>
+                      ECValidator.validateEmptytext('First Name', value),
                   controller: updateController.firstName,
                   leadingText: 'First Name',
                 ),
                 ProfileTile(
-                  validator: (value) => ECValidator.validateEmptytext('Last Name', value),
+                  validator: (value) =>
+                      ECValidator.validateEmptytext('Last Name', value),
                   controller: updateController.lastName,
                   leadingText: 'Last Name',
                 ),
                 ProfileTile(
-                  validator: (value) => ECValidator.validateEmptytext('Username', value),
+                  validator: (value) =>
+                      ECValidator.validateEmptytext('Username', value),
                   controller: updateController.username,
                   leadingText: 'Username',
                 ),
@@ -76,7 +80,15 @@ class ProfileScreen extends StatelessWidget {
                 Center(
                     child: TextButton(
                   onPressed: () {
-                   updateController.updateUserData();
+                    final userNewData = UserModel(
+                        id: auth.currentUser?.uid,
+                        emailAddress: updateController.email.text,
+                        firstName: updateController.firstName.text,
+                        lastName: updateController.lastName.text,
+                        userName: updateController.username.text,
+                        phoneNumber: updateController.phone.text,
+                        profilePicture: '');
+                    updateController.updateUserData(userNewData);
                   },
                   child: Text('Submit',
                       style: Theme.of(context)

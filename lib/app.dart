@@ -1,12 +1,14 @@
 import 'package:e_comm_app/bindings/general_bindings.dart';
+import 'package:e_comm_app/features/authentication/screens/login/login.dart';
 import 'package:e_comm_app/navigation_bar.dart';
 import 'package:e_comm_app/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class App extends StatelessWidget {
-  const App({super.key});
-
+   App({super.key});
+final deviceStorage = GetStorage();
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -14,7 +16,7 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: ECTheme.lightTheme,
       darkTheme: ECTheme.darkTheme,
-      home: const NavigationMenu(),
+      home:  deviceStorage.read('IsLoggedIn') != true ?  const LoginScreen() : const NavigationMenu(),
       initialBinding: GeneralBindings(),
     );
   }

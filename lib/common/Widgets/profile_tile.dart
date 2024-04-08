@@ -6,11 +6,13 @@ class ProfileTile extends StatelessWidget {
     required this.leadingText,
     required this.controller,
     this.validator,
+    this.text
   });
 
   final String leadingText;
   final TextEditingController controller;
   final String? Function(String?)? validator;
+  final  String? text;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class ProfileTile extends StatelessWidget {
             child: TextFormField(
               validator: validator,
               controller: controller,
-              decoration: const InputDecoration(
+              decoration:  const InputDecoration(
                   enabledBorder:
                       OutlineInputBorder(borderRadius: BorderRadius.zero),
                   disabledBorder:

@@ -21,7 +21,8 @@ await GetStorage.init();
 
 FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding); // Keep the native splash screen until the app is opened at least once
 
-  runApp(const App());
+
+  runApp( App());
 }
 
 

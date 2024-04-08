@@ -1,3 +1,4 @@
+import 'package:e_comm_app/data/repositories/authentication_repo.dart';
 import 'package:e_comm_app/features/authentication/controllers/login_controller.dart';
 import 'package:e_comm_app/features/authentication/screens/signup/fogot_password.dart';
 import 'package:e_comm_app/features/authentication/screens/signup/sign_up.dart';
@@ -7,7 +8,6 @@ import 'package:e_comm_app/utils/helpers/helper_function.dart';
 import 'package:e_comm_app/utils/validators/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -101,6 +101,7 @@ class _LoginFormState extends State<LoginForm> {
               child: ElevatedButton(
                   onPressed: () {
                    controller.emailAndPasswordSignIn();
+                  AuthenticationRepository.instance.checkLoginStatus();
                   }, child: const Text(ECText.signin)),
             ),
             const SizedBox(height: ECSize.md),

@@ -23,8 +23,8 @@ class ECCategories extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    width: 56,
-                    height: 56,
+                    width: 50,
+                    height: 50,
                     padding: const EdgeInsets.all(ECSize.sm),
                     decoration: BoxDecoration(
                         color: Colors.white,

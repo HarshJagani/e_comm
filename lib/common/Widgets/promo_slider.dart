@@ -7,11 +7,9 @@ import '../../utils/constants/image_strings.dart';
 class PromoSlider extends StatelessWidget {
   PromoSlider({
     super.key,
-    required this.dark,
   });
 
-  final bool dark;
-  final PageController pageConrtoller = PageController();
+  final PageController pageController = PageController();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,20 +17,25 @@ class PromoSlider extends StatelessWidget {
         SizedBox(
           height: 200,
           child: PageView(
-            controller: pageConrtoller,
+            controller: pageController,
             children: const [
-              ECRoundedImage(imageUrl: ECImageString.promoBanner1, fit:  BoxFit.fill,),
-              ECRoundedImage(imageUrl: ECImageString.promoBanner2, fit: BoxFit.fill),
-              ECRoundedImage(imageUrl: ECImageString.promoBanner3, fit: BoxFit.fill)
+              ECRoundedImage(
+                imageUrl: ECImageString.promoBanner1,
+                fit: BoxFit.fill,
+              ),
+              ECRoundedImage(
+                  imageUrl: ECImageString.promoBanner2, fit: BoxFit.fill),
+              ECRoundedImage(
+                  imageUrl: ECImageString.promoBanner3, fit: BoxFit.fill)
             ],
           ),
         ),
         const SizedBox(height: 10),
         SmoothPageIndicator(
-          controller: pageConrtoller,
+          controller: pageController,
           count: 3,
           effect: ExpandingDotsEffect(
-              activeDotColor: dark ? ECColors.light : ECColors.dark,
+              activeDotColor: ECColors.light ,
               dotHeight: 3),
         )
       ],

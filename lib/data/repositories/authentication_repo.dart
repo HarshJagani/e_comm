@@ -13,20 +13,21 @@ class AuthenticationRepository extends GetxController {
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
 
-// Set authentication user data
-//User? get authUser => _auth.currentUser;  
+  get get => null;
 
+// Set authentication user data
+//User? get authUser => _auth.currentUser;
 
   @override
   void onReady() {
     FlutterNativeSplash.remove();
-   // screenRedirect();
+    // screenRedirect();
   }
 
   //Function to show relevant screen
   screenRedirect() async {
     final user = _auth.currentUser;
-    
+
     if (user != null) {
       // If user is logged in
       if (user.emailVerified) {
@@ -45,6 +46,14 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+  //To check if user is loggedin or not
+  checkLoginStatus() {
+    deviceStorage.writeIfNull('IsLoggedIn', false);
+    if (_auth.currentUser != null) {
+      deviceStorage.write('IsLoggedIn', true);
+    } 
+  }
+
   //EmailPass - Registration
   Future<UserCredential> registerWithEmailAndPassword(
       String email, String password) async {
@@ -53,7 +62,9 @@ class AuthenticationRepository extends GetxController {
   }
 
   //Login with email and password
-  Future<UserCredential> loginWithEmailAndPassword(String email, String password) async{
-    return await _auth.signInWithEmailAndPassword(email: email, password: password);
+  Future<UserCredential> loginWithEmailAndPassword(
+      String email, String password) async {
+    return await _auth.signInWithEmailAndPassword(
+        email: email, password: password);
   }
 }
