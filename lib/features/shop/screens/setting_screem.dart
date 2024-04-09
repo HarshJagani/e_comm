@@ -1,11 +1,9 @@
 import 'package:e_comm_app/common/Widgets/appbar/appbar.dart';
 import 'package:e_comm_app/common/Widgets/settingmenu_tile.dart';
-import 'package:e_comm_app/data/repositories/authentication_repo.dart';
 import 'package:e_comm_app/features/personalization/controllers/user_controller.dart';
 import 'package:e_comm_app/features/shop/screens/profile_settings.dart';
 import 'package:e_comm_app/utils/constants/image_strings.dart';
 import 'package:e_comm_app/utils/constants/size.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';

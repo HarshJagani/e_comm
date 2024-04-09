@@ -35,7 +35,7 @@ class Store extends StatelessWidget {
                     buttonText: 'View all',
                     padding: EdgeInsets.symmetric(vertical: 10)),
                 ECGridLayout(
-                    mainAxisIntent: 80,
+                  //  mainAxisIntent: 80,
                     itemBuilder: (_, index) {
                       return GestureDetector(
                         onTap: () {},

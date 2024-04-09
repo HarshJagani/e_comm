@@ -64,6 +64,7 @@ class ProductUploadController extends GetxController {
     for (var sizeItem in sizeList) {
       sizeItem['isSelected'] = false;
     }
+   
   }
 
   Future<void> productDetails() async {
@@ -72,6 +73,7 @@ class ProductUploadController extends GetxController {
 
     //Passes the text field and size list data to the product model
     final productDetails = ProductModel(
+        title: titleController.text,
         brand: brandController.text,
         category: categoryController.text,
         price: priceController.text,
@@ -97,12 +99,14 @@ class ProductUploadController extends GetxController {
     img = await _picker.pickMultiImage();
     update();
     if (img.isNotEmpty) {
+      selectedImages.clear();
       selectedImages.addAll(img);
     }
   }
 
   //
   Future<void> selectImages(List<XFile> images) async {
+    imagesUrlList.clear();
     setUploadInProgress(true);  //Start the progress indicator
     imagesUrlList.clear(); //Clears the imageUrl list before updating it
     for (int i = 0; i < images.length; i++) {
@@ -121,4 +125,5 @@ class ProductUploadController extends GetxController {
         .putFile(File(image.path));
     return await reference.ref.getDownloadURL(); //Returns the uploaded images url string
   }
+  
 }

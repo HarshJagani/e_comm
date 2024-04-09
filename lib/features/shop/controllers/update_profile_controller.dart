@@ -11,15 +11,15 @@ class UpdateProfileController extends GetxController {
   UpdateProfileController get instance => Get.find();
   final userRepository = UserRepository.instance;
   final firstName = TextEditingController(
-      text: UserController.instance.user.value.firstName ?? 'Not Found');
+      text: UserController.instance.user.value.firstName);
   final lastName = TextEditingController(
-      text: UserController.instance.user.value.lastName ?? 'Not Found');
+      text: UserController.instance.user.value.lastName);
   final username = TextEditingController(
-      text: UserController.instance.user.value.userName ?? 'Not Found');
+      text: UserController.instance.user.value.userName);
   final email = TextEditingController(
-      text: UserController.instance.user.value.emailAddress ?? 'Not Found');
+      text: UserController.instance.user.value.emailAddress);
   final phone = TextEditingController(
-      text: UserController.instance.user.value.phoneNumber ?? 'Not Found');
+      text: UserController.instance.user.value.phoneNumber);
   GlobalKey<FormState> updateUserDetailesKey = GlobalKey<FormState>();
   final profileController = Get.put(UserController());
   Future<void> updateUserData(UserModel userModel) async {

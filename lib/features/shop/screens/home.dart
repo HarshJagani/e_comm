@@ -19,6 +19,7 @@ class HomeScreen extends StatelessWidget {
 
   SingleChildScrollView buildBody() {
     return SingleChildScrollView(
+      controller: ScrollController(keepScrollOffset: false),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -54,7 +55,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Padding(
-              padding: const EdgeInsets.all(ECSize.defaultSpace),
+              padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 24),
               child: PromoSlider()),
           const ECSectionHeading(
             padding: EdgeInsets.symmetric(horizontal: ECSize.defaultSpace),
@@ -64,7 +65,7 @@ class HomeScreen extends StatelessWidget {
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: ECGridLayout(
-                  mainAxisIntent: 300,
+                //  mainAxisIntent: 305,
                   itemBuilder: (_, index) {
                     final product = ProductList().products[index];
                     return ECProductCardVertical(

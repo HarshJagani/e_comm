@@ -19,7 +19,7 @@ class ECCategories extends StatelessWidget {
           itemBuilder: (_, index) {
             return Padding(
               padding:
-              const EdgeInsets.only(left: 20),
+              const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
                   Container(

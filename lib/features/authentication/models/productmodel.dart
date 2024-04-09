@@ -7,10 +7,12 @@ class ProductModel {
   String category;
   String? stock;
  String? salePrize;
+ String? title;
 
   
 
  ProductModel({
+  this.title,
 required this.brand,
  this.stock,
  this.price,
@@ -25,6 +27,7 @@ required this.size
 
   Map<String, dynamic> toJson() {
     return {
+      "Title": title,
       'Brand': brand,
       "Price": price,
       "Size" : size ,

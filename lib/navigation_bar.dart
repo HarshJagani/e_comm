@@ -1,5 +1,7 @@
 import 'package:e_comm_app/features/authentication/controllers/homepage_controller.dart';
+import 'package:e_comm_app/features/authentication/screens/login/login.dart';
 import 'package:e_comm_app/features/authentication/screens/signup/sign_up.dart';
+import 'package:e_comm_app/features/shop/screens/favorite.dart';
 import 'package:e_comm_app/features/shop/screens/home.dart';
 import 'package:e_comm_app/features/shop/screens/setting_screem.dart';
 import 'package:e_comm_app/features/shop/screens/store.dart';
@@ -22,7 +24,7 @@ class NavigationMenu extends StatelessWidget {
               height: 50,
               index: controller.currentIndex.value,
               backgroundColor: Colors.transparent,
-              animationDuration: const Duration(milliseconds: 200),
+              animationDuration: const Duration(milliseconds: 300),
               buttonBackgroundColor: dark ? Colors.white : Colors.black,
               color: dark ? Colors.white : Colors.black,
               onTap: (index) => {
@@ -47,8 +49,8 @@ class NavigationController extends GetxController {
   RxInt currentIndex = 0.obs;
   final screen = [
     const HomeScreen(),
-    const SignUpScreen(),
-    const Store(),
+    const LoginScreen(),
+    const FavoriteScreen(),
     const SettingScreen()
   ];
 }
