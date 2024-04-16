@@ -1,5 +1,4 @@
 import 'package:e_comm_app/common/Widgets/appbar/appbar.dart';
-import 'package:e_comm_app/common/Widgets/profile_tile.dart';
 import 'package:e_comm_app/features/authentication/models/usermodel.dart';
 import 'package:e_comm_app/features/shop/controllers/update_profile_controller.dart';
 import 'package:e_comm_app/navigation_bar.dart';
@@ -48,33 +47,46 @@ class ProfileScreen extends StatelessWidget {
                 Text('Account Settings',
                     style: Theme.of(context).textTheme.headlineSmall),
                 const SizedBox(height: ECSize.md),
-                ProfileTile(
+                TextFormField(
+                  controller: updateController.firstName,
                   validator: (value) =>
                       ECValidator.validateEmptytext('First Name', value),
-                  controller: updateController.firstName,
-                  leadingText: 'First Name',
+                  decoration: const InputDecoration(
+                      labelText: 'Firstname', hintText: 'Firstname'),
                 ),
-                ProfileTile(
+                const SizedBox(height: ECSize.md),
+                TextFormField(
+                  controller: updateController.lastName,
                   validator: (value) =>
                       ECValidator.validateEmptytext('Last Name', value),
-                  controller: updateController.lastName,
-                  leadingText: 'Last Name',
+                  decoration: const InputDecoration(
+                      labelText: 'Lastname', hintText: 'Lastname'),
                 ),
-                ProfileTile(
-                  validator: (value) =>
-                      ECValidator.validateEmptytext('Username', value),
+                const SizedBox(height: ECSize.md),
+                TextFormField(
                   controller: updateController.username,
-                  leadingText: 'Username',
+                  validator: (value) =>
+                      ECValidator.validateEmptytext('User Name', value),
+                  decoration: const InputDecoration(
+                      labelText: 'Userrname', hintText: 'Username'),
                 ),
-                ProfileTile(
-                  validator: (value) => ECValidator.validateEmail(value),
+                const SizedBox(height: ECSize.md),
+                TextFormField(
                   controller: updateController.email,
-                  leadingText: 'Email',
+                  validator: (value) => ECValidator.validateEmail(value),
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: const InputDecoration(
+                      labelText: 'Email', hintText: 'Email'),
                 ),
-                ProfileTile(
-                  validator: (value) => ECValidator.validatenumber(value),
+                const SizedBox(height: ECSize.md),
+                TextFormField(
                   controller: updateController.phone,
-                  leadingText: 'Phone Number',
+                  validator: (value) => ECValidator.validatenumber(value),
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(
+                    labelText: 'Phone',
+                    hintText: 'phone',
+                  ),
                 ),
                 const SizedBox(height: ECSize.iconSm),
                 Center(

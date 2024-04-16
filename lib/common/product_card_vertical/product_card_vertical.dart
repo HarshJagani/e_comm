@@ -3,6 +3,7 @@ import 'package:e_comm_app/common/Widgets/product_price.dart';
 import 'package:e_comm_app/common/Widgets/product_title.dart';
 import 'package:e_comm_app/common/Widgets/rounded_container.dart';
 import 'package:e_comm_app/common/Widgets/rounded_image.dart';
+import 'package:e_comm_app/features/shop/screens/product_detail.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,7 +31,9 @@ class ECProductCardVertical extends StatelessWidget {
     return Stack(
       children: [
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(() => ProductDetailePage());
+          },
           child: Container(
             decoration: BoxDecoration(
                 border: Border.all(color:Colors.grey),

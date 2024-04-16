@@ -5,6 +5,7 @@ class ECRoundedContainer extends StatelessWidget {
   const ECRoundedContainer(
       {super.key,
       this.width,
+      this.alignment,
       this.height,
       this.child,
       this.borderColor = Colors.white,
@@ -24,6 +25,7 @@ class ECRoundedContainer extends StatelessWidget {
   final double radius;
   final Color backgroundColor;
   final bool showBorder;
+  final Alignment? alignment;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,7 @@ class ECRoundedContainer extends StatelessWidget {
       height: height,
       padding: padding,
       margin: margin,
+      alignment: alignment,
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(radius),

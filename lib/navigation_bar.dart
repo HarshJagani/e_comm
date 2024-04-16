@@ -1,10 +1,8 @@
 import 'package:e_comm_app/features/authentication/controllers/homepage_controller.dart';
 import 'package:e_comm_app/features/authentication/screens/login/login.dart';
-import 'package:e_comm_app/features/authentication/screens/signup/sign_up.dart';
 import 'package:e_comm_app/features/shop/screens/favorite.dart';
 import 'package:e_comm_app/features/shop/screens/home.dart';
 import 'package:e_comm_app/features/shop/screens/setting_screem.dart';
-import 'package:e_comm_app/features/shop/screens/store.dart';
 import 'package:e_comm_app/utils/helpers/helper_function.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

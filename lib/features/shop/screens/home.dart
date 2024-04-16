@@ -4,8 +4,10 @@ import 'package:e_comm_app/common/Widgets/search_bar.dart';
 import 'package:e_comm_app/common/Widgets/section_heading.dart';
 import 'package:e_comm_app/common/layout/grid_layout.dart';
 import 'package:e_comm_app/common/product_card_vertical/product_card_vertical.dart';
+import 'package:e_comm_app/features/personalization/controllers/product_controller.dart';
 import 'package:e_comm_app/utils/constants/size.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../common/Widgets/catagory_slider.dart';
 import '../../../common/Widgets/promo_slider.dart';
 
@@ -18,6 +20,7 @@ class HomeScreen extends StatelessWidget {
   }
 
   SingleChildScrollView buildBody() {
+    final controller = Get.put(ProductController());
     return SingleChildScrollView(
       controller: ScrollController(keepScrollOffset: false),
       child: Column(
@@ -55,7 +58,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 24),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 24),
               child: PromoSlider()),
           const ECSectionHeading(
             padding: EdgeInsets.symmetric(horizontal: ECSize.defaultSpace),
@@ -65,17 +68,16 @@ class HomeScreen extends StatelessWidget {
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: ECGridLayout(
-                //  mainAxisIntent: 305,
                   itemBuilder: (_, index) {
-                    final product = ProductList().products[index];
+                   // final product = ProductList().products[index];
                     return ECProductCardVertical(
-                      imageName: product['image'],
-                      title: product['title'],
-                      brand: product['brand'],
-                      price: product['price'],
+                      imageName: controller.product[index].images![0],
+                      title: controller.product[index].title!,
+                      brand: controller.product[index].brand,
+                      price: controller.product[index].price!,
                     );
                   },
-                  itemCount: ProductList().products.length)),
+                  itemCount: controller.product.length)),
         ],
       ),
     );
