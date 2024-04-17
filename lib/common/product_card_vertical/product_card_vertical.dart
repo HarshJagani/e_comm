@@ -3,6 +3,7 @@ import 'package:e_comm_app/common/Widgets/product_price.dart';
 import 'package:e_comm_app/common/Widgets/product_title.dart';
 import 'package:e_comm_app/common/Widgets/rounded_container.dart';
 import 'package:e_comm_app/common/Widgets/rounded_image.dart';
+import 'package:e_comm_app/features/authentication/models/productmodel.dart';
 import 'package:e_comm_app/features/shop/screens/product_detail.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,16 +14,10 @@ import '../../utils/constants/size.dart';
 class ECProductCardVertical extends StatelessWidget {
   const ECProductCardVertical(
       {super.key,
-      required this.imageName,
-      required this.title,
-      required this.brand,
-      required this.price,
-      this.isDiscounted = false});
+      
+      this.isDiscounted = false, required this.product});
 
-  final String imageName;
-  final String title;
-  final String brand;
-  final String price;
+  final ProductModel product;
   final bool isDiscounted;
 
   @override
@@ -32,7 +27,7 @@ class ECProductCardVertical extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: ()  {
-            Get.off(() => const ProductDetailePage());
+            Get.to(() =>  ProductDetailePage(product: product));
           },
           child: Container(
             decoration: BoxDecoration(
@@ -43,7 +38,8 @@ class ECProductCardVertical extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ECRoundedImage(
-                    imageUrl: imageName,
+                  isNetworkImage: true,
+                    imageUrl: product.images![0],
                     height: MediaQuery.of(context).size.height*0.25,
                     width: double.infinity,
                     applyImageRadius: true,
@@ -51,12 +47,12 @@ class ECProductCardVertical extends StatelessWidget {
               //Spacer(),
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0,top:5),
-                  child: ECProductTitle(productTitle: title),
+                  child: ECProductTitle(productTitle: product.title!),
                 ),
 
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
-                  child: ECBrandName(brandName: brand),
+                  child: ECBrandName(brandName: product.brand),
                 ),
                 // const SizedBox(height: 5),
                 Row(
@@ -65,7 +61,7 @@ class ECProductCardVertical extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
-                      child: ECProductPrice(price: price),
+                      child: ECProductPrice(price: product.price!),
                     ),
                     Obx(
                       () => IconButton(

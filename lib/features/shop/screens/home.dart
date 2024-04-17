@@ -1,5 +1,4 @@
 import 'package:e_comm_app/common/Widgets/appbar/home_appbar.dart';
-import 'package:e_comm_app/common/Widgets/product_list.dart';
 import 'package:e_comm_app/common/Widgets/search_bar.dart';
 import 'package:e_comm_app/common/Widgets/section_heading.dart';
 import 'package:e_comm_app/common/layout/grid_layout.dart';
@@ -69,12 +68,10 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: ECGridLayout(
                   itemBuilder: (_, index) {
-                   // final product = ProductList().products[index];
-                    return ECProductCardVertical(
-                      imageName: controller.product[index].images![0],
-                      title: controller.product[index].title!,
-                      brand: controller.product[index].brand,
-                      price: controller.product[index].price!,
+                    return Obx(
+                      () => ECProductCardVertical(
+                        product: controller.product[index],
+                      ),
                     );
                   },
                   itemCount: controller.product.length)),

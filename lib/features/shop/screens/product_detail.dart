@@ -2,6 +2,7 @@ import 'package:e_comm_app/common/Widgets/brad_name.dart';
 import 'package:e_comm_app/common/Widgets/choice_chip.dart';
 import 'package:e_comm_app/common/Widgets/product_bottom_navigation/product_bottom_nav.dart';
 import 'package:e_comm_app/common/Widgets/product_price.dart';
+import 'package:e_comm_app/features/authentication/models/productmodel.dart';
 import 'package:e_comm_app/utils/constants/size.dart';
 import 'package:e_comm_app/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
@@ -9,10 +10,10 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProductDetailePage extends StatelessWidget {
-  const ProductDetailePage({super.key});
-
+  const ProductDetailePage({super.key, required this.product});
+final ProductModel product;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {                                                                                                                           
     return Scaffold(
       bottomNavigationBar: const ECProductBottomNav(),
       body: SingleChildScrollView(
@@ -33,17 +34,18 @@ class ProductDetailePage extends StatelessWidget {
                     },
                     child: PageView(
                       controller: PageController(),
-                      children: const [
+                      children:  [
                         Image(
-                          image: AssetImage('assets/images/products/A-111.jpg'),
+                          image: NetworkImage(product.images![0]),
+                          fit: BoxFit.cover,
+                          
+                        ),
+                        Image(
+                          image: NetworkImage(product.images![1]),
                           fit: BoxFit.cover,
                         ),
                         Image(
-                          image: AssetImage('assets/images/products/A-11.jpg'),
-                          fit: BoxFit.cover,
-                        ),
-                        Image(
-                          image: AssetImage('assets/images/products/A-1.jpg'),
+                          image: NetworkImage(product.images![2]),
                           fit: BoxFit.cover,
                         ),
                       ],
@@ -78,7 +80,7 @@ class ProductDetailePage extends StatelessWidget {
                     children: [
                       Expanded(
                           flex: 4,
-                          child: Text('Adidas Sneakers',
+                          child: Text(product.title!,
                               style:
                                   Theme.of(context).textTheme.headlineSmall)),
                       const Spacer(),
@@ -88,9 +90,9 @@ class ProductDetailePage extends StatelessWidget {
                           child: const Icon(Icons.share))
                     ],
                   ),
-                  const ECBrandName(brandName: 'Adidas'),
+                  ECBrandName(brandName:product.brand),
                   const SizedBox(height: ECSize.sm),
-                  const ECProductPrice(price: '250', isLarge: true),
+                  ECProductPrice(price: product.price!, isLarge: true),
                   const SizedBox(height: ECSize.iconSm),
                   Text('Select Size',
                       style: Theme.of(context).textTheme.bodyLarge),
@@ -101,7 +103,7 @@ class ProductDetailePage extends StatelessWidget {
                         itemBuilder: (_, index) {
                           return ECChoiceChip(
                             selected: false.obs,
-                            label: 'S',
+                            label: product.size[index],
                             onSelected: () {},
                           );
                         },
@@ -110,7 +112,7 @@ class ProductDetailePage extends StatelessWidget {
                         separatorBuilder: (context, index) {
                           return const SizedBox(width: ECSize.sm);
                         },
-                        itemCount: 4),
+                        itemCount: product.size.length),
                   ),
                   const SizedBox(height: ECSize.iconLg),
                   SizedBox(
@@ -135,4 +137,5 @@ class ProductDetailePage extends StatelessWidget {
       ),
     );
   }
+
 }

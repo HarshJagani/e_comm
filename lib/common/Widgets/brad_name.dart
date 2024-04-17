@@ -8,12 +8,19 @@ class ECBrandName extends StatelessWidget {
   final String brandName;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(brandName,style: Theme.of(context).textTheme.bodyMedium),
-        const SizedBox(width: 5),
-        const Icon(Iconsax.verify5,size: ECSize.iconSm,color: Colors.blue)
-      ]
-    );
+    return Row(children: [
+      Expanded(
+          child: 
+          Text(
+            brandName,
+            style: Theme.of(context).textTheme.bodyMedium,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
+          ), ),
+          const SizedBox(width: 3),
+          const Icon(Iconsax.verify5, size: ECSize.iconSm, color: Colors.blue)
+       
+      
+    ]);
   }
 }

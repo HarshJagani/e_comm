@@ -3,6 +3,7 @@ import 'package:e_comm_app/features/authentication/screens/login/login.dart';
 import 'package:e_comm_app/features/shop/screens/favorite.dart';
 import 'package:e_comm_app/features/shop/screens/home.dart';
 import 'package:e_comm_app/features/shop/screens/setting_screem.dart';
+import 'package:e_comm_app/features/shop/screens/store.dart';
 import 'package:e_comm_app/utils/helpers/helper_function.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +48,7 @@ class NavigationController extends GetxController {
   RxInt currentIndex = 0.obs;
   final screen = [
     const HomeScreen(),
-    const LoginScreen(),
+    const Store(),
     const FavoriteScreen(),
     const SettingScreen()
   ];
