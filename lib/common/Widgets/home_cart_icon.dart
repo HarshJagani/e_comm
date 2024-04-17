@@ -1,4 +1,3 @@
-import 'package:e_comm_app/utils/device/device_utilities.dart';
 import 'package:e_comm_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,8 +18,7 @@ class HomeCartIcon extends StatelessWidget {
         Obx(
           () => IconButton(
             onPressed: () {
-              var size = ECDeviceUtilities.getScreenHeight();
-              print(size);
+              
             },
             icon: Icon(
               Icons.shopping_bag_outlined,

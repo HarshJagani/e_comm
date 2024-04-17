@@ -39,13 +39,13 @@ class SignupController extends GetxController {
       // Privacy  Policy and Terms of Service should be checked here
 
       //Register user in firebase authentication and save user data in firebase.
-      final UserCredential = await AuthenticationRepository.instance
+      final userCredential = await AuthenticationRepository.instance
           .registerWithEmailAndPassword(
               email.text.trim(), password.text.trim());
 
       // Save Authenticated user data in the firebase fireStore
       final newUser = UserModel(
-          id: UserCredential.user!.uid,
+          id: userCredential.user!.uid,
           firstName: firstname.text.trim(),
           lastName: lastname.text.trim(),
           userName: username.text.trim(),

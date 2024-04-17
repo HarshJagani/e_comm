@@ -1,6 +1,9 @@
 import 'package:e_comm_app/common/Widgets/brad_name.dart';
 import 'package:e_comm_app/common/Widgets/choice_chip.dart';
+import 'package:e_comm_app/common/Widgets/product_bottom_navigation/product_bottom_nav.dart';
 import 'package:e_comm_app/common/Widgets/product_price.dart';
+import 'package:e_comm_app/utils/constants/size.dart';
+import 'package:e_comm_app/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -11,6 +14,7 @@ class ProductDetailePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: const ECProductBottomNav(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -63,9 +67,9 @@ class ProductDetailePage extends StatelessWidget {
                 )
               ],
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: ECSize.sm),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: ECSize.iconSm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -85,34 +89,47 @@ class ProductDetailePage extends StatelessWidget {
                     ],
                   ),
                   const ECBrandName(brandName: 'Adidas'),
-                  const SizedBox(height: 7),
+                  const SizedBox(height: ECSize.sm),
                   const ECProductPrice(price: '250', isLarge: true),
-                  const SizedBox(height: 15),
+                  const SizedBox(height: ECSize.iconSm),
                   Text('Select Size',
                       style: Theme.of(context).textTheme.bodyLarge),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: ECSize.sm),
                   SizedBox(
                     height: 40,
                     child: ListView.separated(
                         itemBuilder: (_, index) {
                           return ECChoiceChip(
-                           selected: false.obs,
+                            selected: false.obs,
                             label: 'S',
-                            onSelected: () {
-
-                            },
+                            onSelected: () {},
                           );
                         },
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,
                         separatorBuilder: (context, index) {
-                          return const SizedBox(width: 10);
+                          return const SizedBox(width: ECSize.sm);
                         },
                         itemCount: 4),
                   ),
+                  const SizedBox(height: ECSize.iconLg),
+                  SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: const Text(ECText.buynow),
+                      )),
+                  const SizedBox(height: ECSize.iconLg),
+                  Text(ECText.discreption,
+                      style: Theme.of(context).textTheme.headlineSmall),
+                  const SizedBox(height: ECSize.sm),
+                  const Text(
+                      'The Samba OG is considered the classic and most prevalent Samba Silhouette available. It typically is constructed with a mix of suede and leather, complemented by a contrasting gum sole and the Three-Stripe branding.'),
+                 const SizedBox(height: ECSize.sm),
+                 const Divider(thickness: 2),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

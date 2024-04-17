@@ -53,6 +53,7 @@ class ECText {
   static const String and = 'and';
   static const String skip = 'skip';
   static const String done = 'Done';
-
+  static const String discreption = 'Discreption';
+  static const String buynow = 'Buy Now';
   //
 }

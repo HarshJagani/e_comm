@@ -12,7 +12,7 @@ class ECElevatedButtonTheme{
       foregroundColor: Colors.white,
       disabledBackgroundColor: Colors.grey,
       disabledForegroundColor: Colors.grey,
-      side: const BorderSide(color: Colors.blue),
+      //side: const BorderSide(color: Colors.blue),
       textStyle: const TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w600),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       padding: const EdgeInsets.all(8)
@@ -25,7 +25,7 @@ class ECElevatedButtonTheme{
       foregroundColor: Colors.white,
       disabledBackgroundColor: Colors.grey,
       disabledForegroundColor: Colors.grey,
-      side: const BorderSide(color: Colors.blue),
+      //side: const BorderSide(color: Colors.blue),
       textStyle: const TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w600),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       padding: const EdgeInsets.all(8)

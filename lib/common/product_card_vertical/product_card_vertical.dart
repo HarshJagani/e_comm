@@ -31,8 +31,8 @@ class ECProductCardVertical extends StatelessWidget {
     return Stack(
       children: [
         GestureDetector(
-          onTap: () {
-            Get.to(() => ProductDetailePage());
+          onTap: ()  {
+            Get.off(() => const ProductDetailePage());
           },
           child: Container(
             decoration: BoxDecoration(
