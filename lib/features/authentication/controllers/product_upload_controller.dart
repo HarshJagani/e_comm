@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_comm_app/features/authentication/models/productmodel.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,6 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import '../../../data/repositories/user_repository.dart';
 
 class ProductUploadController extends GetxController {
+   final FirebaseFirestore _db = FirebaseFirestore.instance;
   static ProductUploadController get instance => Get.find();
   final titleController = TextEditingController();
   final brandController = TextEditingController();
@@ -15,7 +17,7 @@ class ProductUploadController extends GetxController {
   final stockController = TextEditingController();
   final priceController = TextEditingController();
   final salePriceController = TextEditingController();
-
+  RxList<Map<String,dynamic>> brandNameList = <Map<String,dynamic>>[].obs;
   RxList<XFile> selectedImages = <XFile>[].obs;
   RxList<String> imagesUrlList = <String>[].obs;
   final ImagePicker _picker = ImagePicker();
@@ -38,6 +40,12 @@ class ProductUploadController extends GetxController {
     {'size': '34', 'isSelected': false}.obs,
   ].obs;
   RxList<String> finalSizeList = <String>[].obs;
+
+   @override
+  void onInit() {
+    super.onInit();
+    getBrands();
+  }
 
   returnSelectedSizeList() {
     finalSizeList.clear();
@@ -125,5 +133,16 @@ class ProductUploadController extends GetxController {
         .putFile(File(image.path));
     return await reference.ref.getDownloadURL(); //Returns the uploaded images url string
   }
-  
+
+//Function to fatch brands list from firestore.
+Future<List<Map<String, dynamic>>> getBrands() async {
+  final querySnapshot = await _db.collection('brand').get();
+ List<Map<String, dynamic>> brands = [];
+  for (var doc in querySnapshot.docs) {
+    brands.add(doc.data());
+  }
+  brandNameList = brands.obs;
+  print(brandNameList);
+  return brands;
+}
 }

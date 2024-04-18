@@ -12,6 +12,7 @@ class UploadProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = ECHelperFunctions.isDarkMode(context);
+    String dropDownMenuItem = '1';
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -38,16 +39,38 @@ class UploadProduct extends StatelessWidget {
                             const InputDecoration(hintText: 'Product title'),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 18.0),
-                      child: TextField(
-                        controller: productUploadController.brandController,
-                        decoration:
-                            const InputDecoration(hintText: 'Product brand'),
+                    Container(
+                      width: double.infinity,
+                      height: 60,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          border: Border.all(
+                            color: Colors.grey,
+                            width: 1.5,
+                          )),
+                      child: Obx(
+                        () => DropdownButton<String>(
+                            padding: const EdgeInsets.all(15),
+                            borderRadius: BorderRadius.circular(10),
+                            icon: const Icon(Icons.arrow_drop_down,
+                                color: Colors.blue),
+                            value: dropDownMenuItem,
+                            items: [
+                              ...productUploadController.brandNameList
+                                  .map<DropdownMenuItem<String>>((data) {
+                                return DropdownMenuItem<String>(
+                                  value: data['id'].toString(),
+                                  child: Text(data['name']!),
+                                );
+                              })
+                            ],
+                            onChanged: (String? newValue) {
+                              dropDownMenuItem = newValue!;
+                            }),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 18.0),
+                      padding: const EdgeInsets.only(bottom: 18.0, top: 18),
                       child: TextField(
                         controller: productUploadController.priceController,
                         decoration:
@@ -73,7 +96,6 @@ class UploadProduct extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 18),
                       child: Container(
-                        //  height: double.infinity,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(color: Colors.grey)),
@@ -155,8 +177,9 @@ class UploadProduct extends StatelessWidget {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            productUploadController.returnSelectedSizeList();
-                            productUploadController.productDetails();
+                            // productUploadController.returnSelectedSizeList();
+                            // productUploadController.productDetails();
+                            productUploadController.getBrands();
                           },
                           child: const Text('Upload data'),
                         ),

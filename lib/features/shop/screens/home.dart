@@ -11,7 +11,8 @@ import '../../../common/Widgets/catagory_slider.dart';
 import '../../../common/Widgets/promo_slider.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+   final controller = Get.put(ProductController());
+   HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,8 @@ class HomeScreen extends StatelessWidget {
   }
 
   SingleChildScrollView buildBody() {
-    final controller = Get.put(ProductController());
+    print('build ran');
+   
     return SingleChildScrollView(
       controller: ScrollController(keepScrollOffset: false),
       child: Column(
@@ -78,5 +80,7 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
     );
+     
   }
+ 
 }

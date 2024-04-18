@@ -5,12 +5,10 @@ import 'package:e_comm_app/common/Widgets/rounded_container.dart';
 import 'package:e_comm_app/common/Widgets/search_bar.dart';
 import 'package:e_comm_app/common/Widgets/section_heading.dart';
 import 'package:e_comm_app/common/layout/grid_layout.dart';
-import 'package:e_comm_app/features/authentication/models/productmodel.dart';
 import 'package:e_comm_app/features/shop/screens/brand_products.dart';
 import 'package:e_comm_app/utils/constants/colors.dart';
 import 'package:e_comm_app/utils/constants/size.dart';
 import 'package:e_comm_app/utils/helpers/helper_function.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -44,7 +42,7 @@ class Store extends StatelessWidget {
                     itemBuilder: (_, index) {
                       return GestureDetector(
                         onTap: () {
-                           Get.to(()=> BrandProducts());
+                           Get.to(()=> const BrandProducts());
                         },
                         child: const ECRoundedContainer(
                           backgroundColor: Colors.transparent,

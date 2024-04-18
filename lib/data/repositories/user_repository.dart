@@ -23,6 +23,7 @@ class UserRepository extends GetxController {
     final querySnapshot = await _db.collection('products').get();
     final allProducts =
         querySnapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
+        print(allProducts);
     return allProducts;
   }
 
