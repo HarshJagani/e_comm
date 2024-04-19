@@ -53,7 +53,7 @@ class SettingScreen extends StatelessWidget {
                             .apply(color: Colors.white.withOpacity(0.9))),
                     trailing: IconButton(
                         onPressed: () {
-                          Get.off(() => const ProfileScreen());
+                          Get.off(() => ProfileScreen());
                         },
                         icon: const Icon(Iconsax.edit, color: Colors.white)),
                   ),

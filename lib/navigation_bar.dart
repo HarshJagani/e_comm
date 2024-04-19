@@ -47,7 +47,7 @@ class NavigationController extends GetxController {
   RxInt currentIndex = 0.obs;
   final screen = [
      HomeScreen(),
-    const Store(),
+     Store(),
     const FavoriteScreen(),
     const SettingScreen()
   ];

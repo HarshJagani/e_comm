@@ -9,7 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import '../../../data/repositories/user_repository.dart';
 
 class ProductUploadController extends GetxController {
-   final FirebaseFirestore _db = FirebaseFirestore.instance;
+  final FirebaseFirestore _db = FirebaseFirestore.instance;
   static ProductUploadController get instance => Get.find();
   final titleController = TextEditingController();
   final brandController = TextEditingController();
@@ -17,13 +17,13 @@ class ProductUploadController extends GetxController {
   final stockController = TextEditingController();
   final priceController = TextEditingController();
   final salePriceController = TextEditingController();
-  RxList<Map<String,dynamic>> brandNameList = <Map<String,dynamic>>[].obs;
+  RxList<Map<String, dynamic>> brandNameList = <Map<String, dynamic>>[].obs;
   RxList<XFile> selectedImages = <XFile>[].obs;
   RxList<String> imagesUrlList = <String>[].obs;
   final ImagePicker _picker = ImagePicker();
   final RxBool _uploading = false.obs;
   bool get uploading => _uploading.value;
-
+  RxString dropDownMenuItem = '1'.obs;
   RxList<RxMap<String, dynamic>> sizeList = [
     {'size': 'S', 'isSelected': false}.obs,
     {'size': 'M', 'isSelected': false}.obs,
@@ -41,7 +41,7 @@ class ProductUploadController extends GetxController {
   ].obs;
   RxList<String> finalSizeList = <String>[].obs;
 
-   @override
+  @override
   void onInit() {
     super.onInit();
     getBrands();
@@ -72,7 +72,6 @@ class ProductUploadController extends GetxController {
     for (var sizeItem in sizeList) {
       sizeItem['isSelected'] = false;
     }
-   
   }
 
   Future<void> productDetails() async {
@@ -88,6 +87,7 @@ class ProductUploadController extends GetxController {
         salePrize: salePriceController.text,
         stock: stockController.text,
         images: imagesUrlList,
+        brandId: int.tryParse(dropDownMenuItem.value),
         size: returnSelectedSizeList());
 
     //Upload product data to firebase fire store
@@ -115,14 +115,14 @@ class ProductUploadController extends GetxController {
   //
   Future<void> selectImages(List<XFile> images) async {
     imagesUrlList.clear();
-    setUploadInProgress(true);  //Start the progress indicator
+    setUploadInProgress(true); //Start the progress indicator
     imagesUrlList.clear(); //Clears the imageUrl list before updating it
     for (int i = 0; i < images.length; i++) {
       dynamic imageUrl = await uploadImages(images[i]);
       imagesUrlList.add(imageUrl.toString());
     }
     update();
-    setUploadInProgress(false);  //Close the progress indicator
+    setUploadInProgress(false); //Close the progress indicator
   }
 
 //Upload images to firebase storage
@@ -131,18 +131,18 @@ class ProductUploadController extends GetxController {
         .ref()
         .child('product_images/${DateTime.now().millisecondsSinceEpoch}')
         .putFile(File(image.path));
-    return await reference.ref.getDownloadURL(); //Returns the uploaded images url string
+    return await reference.ref
+        .getDownloadURL(); //Returns the uploaded images url string
   }
 
 //Function to fatch brands list from firestore.
-Future<List<Map<String, dynamic>>> getBrands() async {
-  final querySnapshot = await _db.collection('brand').get();
- List<Map<String, dynamic>> brands = [];
-  for (var doc in querySnapshot.docs) {
-    brands.add(doc.data());
+  Future<void> getBrands() async {
+    final querySnapshot = await _db.collection('brand').get();
+    List<Map<String, dynamic>> brands = [];
+    for (var doc in querySnapshot.docs) {
+      brands.add(doc.data());
+    }
+    brandNameList = brands.obs;
+    update();
   }
-  brandNameList = brands.obs;
-  print(brandNameList);
-  return brands;
-}
 }

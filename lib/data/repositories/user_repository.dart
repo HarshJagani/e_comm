@@ -28,8 +28,8 @@ class UserRepository extends GetxController {
   }
 
 //Function to fetch specifyc brend products.
-Future<List<ProductModel>> fetchSpecifycBrandProducts() async {
-  final querySnapshot = await _db.collection('products').where('Brand',isEqualTo: 'Adidas').get();
+Future<List<ProductModel>> fetchSpecifycBrandProducts({int? id}) async {
+  final querySnapshot = await _db.collection('products').where('BrandId',isEqualTo: id).get();
   final brandAllProducts =
       querySnapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
      // print(brandAllProducts);

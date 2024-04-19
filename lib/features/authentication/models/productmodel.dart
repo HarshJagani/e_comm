@@ -10,6 +10,7 @@ class ProductModel {
   String? stock;
   String? salePrize;
   String? title;
+  int? brandId;
 
   ProductModel(
       {this.title,
@@ -20,6 +21,7 @@ class ProductModel {
       required this.category,
       this.isFeatured,
       this.salePrize,
+      this.brandId,
       required this.size});
 
 //Convert model to Json structure for storing data in firebase.
@@ -34,6 +36,7 @@ class ProductModel {
       "isFeatured": isFeatured,
       "Category": category,
       "Stock": stock,
+      "BrandId": brandId,
       "Sale Price": salePrize
     };
   }
@@ -46,7 +49,7 @@ class ProductModel {
       images: List.empty(),
       price: '');
 
-// Facrory method to creat UserModel from a firebase document snapshot.
+// Facrory method to creat ProductModel from a firebase document snapshot.
   factory ProductModel.fromSnapshot(
       DocumentSnapshot<Map<String, dynamic>> document) {
     final data = document.data()!;
@@ -56,6 +59,9 @@ class ProductModel {
         price: data['Price'],
         title: data['Title'],
         category: data['Category'],
-        size: data['Size']);
+        size: data['Size'],
+        brandId: data['BrandId']
+        );
+      
   }
 }

@@ -6,20 +6,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class BrandProducts extends StatelessWidget {
-  const BrandProducts({super.key});
-
+  BrandProducts({super.key});
+  final id = Get.arguments as int;
+  final controller = ProductController.instance;
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ProductController());
     return Scaffold(
-      appBar: const ECAppBar(
-        showBackArrow: true,
-      ),
-      body: ECGridLayout(itemBuilder: (_, index) {
-        return
-         Obx(
-          () => ECProductCardVertical(product: controller.brandProducts[index]));
-      }, itemCount: controller.brandProducts.length)
-    );
+        appBar: const ECAppBar(
+          showBackArrow: true,
+        ),
+        body: ECGridLayout(
+            itemBuilder: (_, index) {
+              return Obx(() => ECProductCardVertical(
+                  product: controller.brandProducts[index]));
+            },
+            itemCount: controller.brandProducts.length));
   }
 }

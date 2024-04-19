@@ -11,17 +11,23 @@ import '../../../common/Widgets/catagory_slider.dart';
 import '../../../common/Widgets/promo_slider.dart';
 
 class HomeScreen extends StatelessWidget {
-   final controller = Get.put(ProductController());
-   HomeScreen({super.key});
+  final controller = Get.put(ProductController());
+  HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: buildBody());
+    return GetBuilder<ProductController>(builder: (controller) {
+      //Check if the products are fetched from firebase or not
+      if (controller.product.isNotEmpty) {
+        return Scaffold(body: buildBody());
+      } else {
+        // If the products are not fetched yet, show a loading indicator
+        return const Center(child: CircularProgressIndicator());
+      }
+    });
   }
 
   SingleChildScrollView buildBody() {
-    print('build ran');
-   
     return SingleChildScrollView(
       controller: ScrollController(keepScrollOffset: false),
       child: Column(
@@ -80,7 +86,5 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
     );
-     
   }
- 
 }
