@@ -3,11 +3,9 @@ import 'package:e_comm_app/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
 
 class TermsCondition extends StatefulWidget {
-  const TermsCondition({
-    super.key,
-    required this.dark,
-  });
+  const TermsCondition({super.key,required this.dark});
 
+  //Initialization and variables.
   final bool dark;
 
   @override
@@ -15,7 +13,7 @@ class TermsCondition extends StatefulWidget {
 }
 
 class _TermsConditionState extends State<TermsCondition> {
-  static bool rememberme = true;
+  static bool rememberMe = true;
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +24,10 @@ class _TermsConditionState extends State<TermsCondition> {
             width: 24,
             height: 24,
             child: Checkbox(
-                value: rememberme,
+                value: rememberMe,
                 onChanged: (value) {
                   setState(() {
-                    rememberme = value!;
+                    rememberMe = value!;
                   });
                 })),
         const SizedBox(width: 10),
