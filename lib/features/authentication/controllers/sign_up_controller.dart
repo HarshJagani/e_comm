@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 class SignupController extends GetxController {
   static SignupController get instance => Get.find();
 
-  //Variables
+  //Initialization and variables.
   final email = TextEditingController();
   final password = TextEditingController();
   final username = TextEditingController();

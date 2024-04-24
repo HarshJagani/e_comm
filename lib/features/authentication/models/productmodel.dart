@@ -22,7 +22,8 @@ class ProductModel {
       this.isFeatured,
       this.salePrize,
       this.brandId,
-      required this.size});
+      required this.size
+      });
 
 //Convert model to Json structure for storing data in firebase.
 
@@ -47,7 +48,8 @@ class ProductModel {
       category: '',
       size: List.empty(),
       images: List.empty(),
-      price: '');
+      price: ''
+      );
 
 // Facrory method to creat ProductModel from a firebase document snapshot.
   factory ProductModel.fromSnapshot(

@@ -7,19 +7,29 @@ import 'package:get/get.dart';
 
 class BrandProducts extends StatelessWidget {
   BrandProducts({super.key});
-  final id = Get.arguments as int;
+
+  //Initialization and variables.
   final controller = ProductController.instance;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: const ECAppBar(
-          showBackArrow: true,
-        ),
-        body: ECGridLayout(
-            itemBuilder: (_, index) {
-              return Obx(() => ECProductCardVertical(
-                  product: controller.brandProducts[index]));
-            },
-            itemCount: controller.brandProducts.length));
+    return GetBuilder<ProductController>(builder: (controller) {
+      if (controller.brandProducts.isEmpty) {
+        return const Center(child:  CircularProgressIndicator());
+      } else {
+        return Scaffold(
+            appBar: ECAppBar(
+                showBackArrow: true,
+                leadingOnPressed: () {
+                  Get.back();
+                }),
+            body: ECGridLayout(
+                itemBuilder: (_, index) {
+                  return Obx(() => ECProductCardVertical(
+                      product: controller.brandProducts[index]));
+                },
+                itemCount: controller.brandProducts.length));
+      }
+    });
   }
 }

@@ -11,13 +11,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ProfileScreen extends StatelessWidget {
+
+  //Initialization and variables.
   ProfileScreen({super.key});
   final updateController = Get.put(UpdateProfileController());
   final auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<UpdateProfileController>(builder: (controller) {
-      
       return Scaffold(
         appBar: ECAppBar(
           showBackArrow: true,
@@ -33,7 +35,7 @@ class ProfileScreen extends StatelessWidget {
   SingleChildScrollView buildBody(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: Form(
           key: updateController.updateUserDetailesKey,
           child: Column(
@@ -71,7 +73,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               const SizedBox(height: ECSize.md),
               TextFormField(
-                controller: updateController.username,
+                controller: updateController.userName,
                 validator: (value) =>
                     ECValidator.validateEmptytext('User Name', value),
                 decoration: const InputDecoration(
@@ -104,7 +106,7 @@ class ProfileScreen extends StatelessWidget {
                       emailAddress: updateController.email.text,
                       firstName: updateController.firstName.text,
                       lastName: updateController.lastName.text,
-                      userName: updateController.username.text,
+                      userName: updateController.userName.text,
                       phoneNumber: updateController.phone.text,
                       profilePicture: '');
                   updateController.updateUserData(userNewData);

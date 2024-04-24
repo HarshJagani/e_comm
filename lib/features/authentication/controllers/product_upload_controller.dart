@@ -9,20 +9,23 @@ import 'package:image_picker/image_picker.dart';
 import '../../../data/repositories/user_repository.dart';
 
 class ProductUploadController extends GetxController {
-  final FirebaseFirestore _db = FirebaseFirestore.instance;
+
+  //Initialization and variables.
   static ProductUploadController get instance => Get.find();
+  final FirebaseFirestore _db = FirebaseFirestore.instance;
   final titleController = TextEditingController();
   final brandController = TextEditingController();
   final categoryController = TextEditingController();
   final stockController = TextEditingController();
   final priceController = TextEditingController();
   final salePriceController = TextEditingController();
-  RxList<Map<String, dynamic>> brandNameList = <Map<String, dynamic>>[].obs;
-  RxList<XFile> selectedImages = <XFile>[].obs;
-  RxList<String> imagesUrlList = <String>[].obs;
   final ImagePicker _picker = ImagePicker();
   final RxBool _uploading = false.obs;
   bool get uploading => _uploading.value;
+  RxList<Map<String, dynamic>> brandNameList = <Map<String, dynamic>>[].obs;
+  RxList<XFile> selectedImages = <XFile>[].obs;
+  RxList<String> imagesUrlList = <String>[].obs;
+  RxList<String> finalSizeList = <String>[].obs;
   RxString dropDownMenuItem = '1'.obs;
   RxList<RxMap<String, dynamic>> sizeList = [
     {'size': 'S', 'isSelected': false}.obs,
@@ -39,7 +42,7 @@ class ProductUploadController extends GetxController {
     {'size': '32', 'isSelected': false}.obs,
     {'size': '34', 'isSelected': false}.obs,
   ].obs;
-  RxList<String> finalSizeList = <String>[].obs;
+  
 
   @override
   void onInit() {
@@ -47,6 +50,7 @@ class ProductUploadController extends GetxController {
     getBrands();
   }
 
+ //
   returnSelectedSizeList() {
     finalSizeList.clear();
     for (final sizeMap in sizeList) {

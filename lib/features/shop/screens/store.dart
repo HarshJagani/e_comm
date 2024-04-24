@@ -10,16 +10,16 @@ import 'package:e_comm_app/features/personalization/controllers/product_controll
 import 'package:e_comm_app/features/shop/screens/brand_products.dart';
 import 'package:e_comm_app/utils/constants/colors.dart';
 import 'package:e_comm_app/utils/constants/size.dart';
-import 'package:e_comm_app/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class Store extends StatelessWidget {
-  Store({
-    super.key,
-  });
+  Store({super.key});
+
+  //Initialization and variables.
   final controller = Get.put(ProductUploadController());
+  
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ProductUploadController>(builder: (controller) {
@@ -46,13 +46,12 @@ class Store extends StatelessWidget {
                         buttonText: 'View all',
                         padding: EdgeInsets.symmetric(vertical: 10)),
                     ECGridLayout(
-                        //  mainAxisIntent: 80,
                         itemBuilder: (_, index) {
                           return GestureDetector(
                             onTap: () {
                               int selectedBrandId = controller.brandNameList[index]['id'];
                               ProductController.instance.setBradIdValue(selectedBrandId);
-                              Get.to(() =>  BrandProducts() );
+                              Get.to(() => BrandProducts());
                             },
                             child: ECRoundedContainer(
                               backgroundColor: Colors.transparent,
@@ -74,9 +73,7 @@ class Store extends StatelessWidget {
                                             CrossAxisAlignment.start,
                                         children: [
                                           ECBrandName(
-                                              brandName: controller
-                                                      .brandNameList[index]
-                                                  ['name']),
+                                              brandName: controller.brandNameList[index]['name']),
                                         ],
                                       ),
                                     )
@@ -87,21 +84,19 @@ class Store extends StatelessWidget {
                           );
                         },
                         itemCount: controller.brandNameList.length),
-                    TabBar(
+                    const TabBar (
                         tabAlignment: TabAlignment.start,
                         isScrollable: true,
                         indicatorColor: ECColors.primary,
                         unselectedLabelColor: Colors.grey,
-                        padding: const EdgeInsets.only(top: 20),
-                        labelColor: ECHelperFunctions.isDarkMode(context)
-                            ? Colors.white
-                            : Colors.black,
-                        tabs: const [
+                        padding: EdgeInsets.only(top: 20),
+                        tabs: [
                           Tab(child: Text('Sports')),
                           Tab(child: Text('Clothes')),
                           Tab(child: Text('Electronics')),
                           Tab(child: Text('Cosmetics'))
-                        ])
+                        ]
+                    )
                   ],
                 ),
               ),

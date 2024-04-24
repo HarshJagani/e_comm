@@ -10,8 +10,11 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProductDetailePage extends StatelessWidget {
+
+  //Initialization and variables.
   const ProductDetailePage({super.key, required this.product});
-final ProductModel product;
+  final ProductModel product;
+  
   @override
   Widget build(BuildContext context) {                                                                                                                           
     return Scaffold(
@@ -115,7 +118,7 @@ final ProductModel product;
                         itemCount: product.size.length),
                   ),
                   const SizedBox(height: ECSize.iconLg),
-                  SizedBox(
+                  SizedBox( 
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {},

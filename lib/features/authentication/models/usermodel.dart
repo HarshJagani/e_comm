@@ -11,14 +11,16 @@ class UserModel {
   String? name;
 
   UserModel(
-      { this.id,
+      { 
+      this.id,
       required this.firstName,
       required this.lastName,
       required this.userName,
       required this.phoneNumber,
       required this.profilePicture,
       required this.emailAddress,
-      this.name});
+      this.name 
+      });
 
 //Convert model to Json structure for storing data in firebase.
   Map<String, dynamic> toJson() {
@@ -41,7 +43,8 @@ class UserModel {
       userName: '',
       phoneNumber: '',
       profilePicture: '',
-      emailAddress: '');
+      emailAddress: ''
+      );
 
 // Facrory method to creat UserModel from a firebase document snapshot.
   factory UserModel.fromSnapshot(

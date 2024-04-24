@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 
 class UserController extends GetxController {
   static UserController get instance => Get.find();
-
+ 
+  //Initialization and variables.
   Rx<UserModel> user = UserModel.empty().obs;
   final userRepository = Get.put(UserRepository());
 
@@ -17,10 +18,12 @@ class UserController extends GetxController {
 //Fetch user record
   Future<void> fetchuserRecord() async {
     try {
+      this.user(UserModel.empty());
       final user = await userRepository.fetchUserDetails();
       this.user(user);
     } catch (e) {
       throw 'Somthing went wrong!';
     }
+    
   }
 }
