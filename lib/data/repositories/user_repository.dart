@@ -23,20 +23,19 @@ class UserRepository extends GetxController {
     final querySnapshot = await _db.collection('products').get();
     final allProducts =
         querySnapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
-        print(allProducts);
+        //print(allProducts);
     return allProducts;
   }
 
-//Function to fetch specifyc brend products.
-Future<List<ProductModel>> fetchSpecifycBrandProducts({int? id}) async {
+//Function to fetch specific brand products.
+Future<List<ProductModel>> fetchSpecificBrandProducts({int? id}) async {
   final querySnapshot = await _db.collection('products').where('BrandId',isEqualTo: id).get();
   final brandAllProducts =
       querySnapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
-     // print(brandAllProducts);
   return brandAllProducts;
 }  
 
-//Function to fetch user detailes  from the fire base using  id
+//Function to fetch user details  from the fire base using  id
   Future<UserModel?> fetchUserDetails() async {
     try {
       final documentSnapshot = await _db

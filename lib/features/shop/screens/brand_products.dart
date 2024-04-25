@@ -15,7 +15,12 @@ class BrandProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<ProductController>(builder: (controller) {
       if (controller.brandProducts.isEmpty) {
-        return const Center(child:  CircularProgressIndicator());
+        return Container(
+          height: double.infinity,
+          width: double.infinity,
+          alignment: Alignment.center,
+          color: Colors.black,
+          child: CircularProgressIndicator());
       } else {
         return Scaffold(
             appBar: ECAppBar(

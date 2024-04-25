@@ -15,7 +15,7 @@ class FavoriteScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed:   () {
-              Get.off(() =>  UploadProduct());
+              Get.off(() => const UploadProduct());
             },
             icon: const Icon(Icons.add,color: Colors.blue)
             )

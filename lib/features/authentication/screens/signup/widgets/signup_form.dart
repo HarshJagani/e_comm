@@ -1,5 +1,5 @@
 import 'package:e_comm_app/features/authentication/controllers/sign_up_controller.dart';
-import 'package:e_comm_app/features/authentication/screens/signup/widgets/term&condition.dart';
+import 'package:e_comm_app/features/authentication/screens/signup/widgets/term_condition.dart';
 import 'package:e_comm_app/utils/constants/size.dart';
 import 'package:e_comm_app/utils/constants/text_strings.dart';
 import 'package:e_comm_app/utils/helpers/helper_function.dart';
@@ -8,15 +8,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SingnUpForm extends StatefulWidget {
-  const SingnUpForm({
+class SignUpForm extends StatefulWidget {
+  const SignUpForm({
     super.key,
   });
   @override
-  State<SingnUpForm> createState() => _SingnUpFormState();
+  State<SignUpForm> createState() => _SignUpFormState();
 }
 
-class _SingnUpFormState extends State<SingnUpForm> {
+class _SignUpFormState extends State<SignUpForm> {
   bool passwordHide = false;
   @override
   Widget build(BuildContext context) {

@@ -49,9 +49,9 @@ class Store extends StatelessWidget {
                         itemBuilder: (_, index) {
                           return GestureDetector(
                             onTap: () {
+                              Get.to(() => BrandProducts());
                               int selectedBrandId = controller.brandNameList[index]['id'];
                               ProductController.instance.setBradIdValue(selectedBrandId);
-                              Get.to(() => BrandProducts());
                             },
                             child: ECRoundedContainer(
                               backgroundColor: Colors.transparent,

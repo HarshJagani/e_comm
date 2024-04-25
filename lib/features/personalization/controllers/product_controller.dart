@@ -10,6 +10,7 @@ class ProductController extends GetxController {
   RxList<ProductModel> product = <ProductModel>[].obs;
   RxList<ProductModel> brandProducts = <ProductModel>[].obs;
   int brandId = 0;
+  bool isLoading = false;
 
   @override
   void onInit() {
@@ -29,12 +30,15 @@ class ProductController extends GetxController {
   //Fetch user record
   Future<void> fetchProductRecord() async {
     try {
+      isLoading = true;
       final product = await userRepository.fetchAllProducts();
       this.product.addAll(product);
     } catch (e) {
       throw 'Something went wrong!';
-    }
+    } 
+    isLoading = false;
     update();
+    
   }
 
   //Function to fetch brand products
