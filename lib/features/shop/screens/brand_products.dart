@@ -20,7 +20,7 @@ class BrandProducts extends StatelessWidget {
           width: double.infinity,
           alignment: Alignment.center,
           color: Colors.black,
-          child: CircularProgressIndicator());
+          child: const CircularProgressIndicator());
       } else {
         return Scaffold(
             appBar: ECAppBar(

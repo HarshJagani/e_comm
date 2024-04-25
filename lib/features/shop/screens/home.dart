@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                     bottomRight: Radius.circular(25))),
             child: Column(
               children: [
-                 HomeAppBar(),
+                 const HomeAppBar(),
                 SizedBox(height: ECSize.spaceBtwSections),
                 const Padding(
                   padding:
