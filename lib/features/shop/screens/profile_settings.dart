@@ -1,5 +1,7 @@
 import 'package:e_comm_app/common/Widgets/appbar/appbar.dart';
+import 'package:e_comm_app/common/Widgets/rounded_image.dart';
 import 'package:e_comm_app/features/authentication/models/usermodel.dart';
+import 'package:e_comm_app/features/personalization/controllers/user_controller.dart';
 import 'package:e_comm_app/features/shop/controllers/update_profile_controller.dart';
 import 'package:e_comm_app/navigation_bar.dart';
 import 'package:e_comm_app/utils/constants/colors.dart';
@@ -11,7 +13,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ProfileScreen extends StatelessWidget {
-
   //Initialization and variables.
   ProfileScreen({super.key});
   final updateController = Get.put(UpdateProfileController());
@@ -43,12 +44,22 @@ class ProfileScreen extends StatelessWidget {
             children: [
               Center(
                 child: GestureDetector(
-                  onTap: () {},
-                  child: CircleAvatar(
-                    radius: 35,
-                    child: Image.asset(ECImageString.faceBookLogo),
-                  ),
-                ),
+                    onTap: () {
+                      updateController.updateUserImage();
+                    },
+                    child: 
+                     Obx(
+                       ()=> ECRoundedImage(
+                        imageUrl:
+                            UserController.instance.user.value.profilePicture,
+                        isNetworkImage: true,
+                        borderRadius: 100,
+                        height: 80,
+                        width: 80,
+                        fit: BoxFit.cover,
+                                           ),
+                     )),
+               
               ),
               SizedBox(height: ECSize.spaceBtwSections),
               const Divider(color: Colors.grey),
@@ -108,7 +119,7 @@ class ProfileScreen extends StatelessWidget {
                       lastName: updateController.lastName.text,
                       userName: updateController.userName.text,
                       phoneNumber: updateController.phone.text,
-                      profilePicture: '');
+                      profilePicture: updateController.profilePictureUrl?.value ?? '');
                   updateController.updateUserData(userNewData);
                 },
                 child: Text('Submit',
