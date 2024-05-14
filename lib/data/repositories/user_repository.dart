@@ -1,12 +1,18 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_comm_app/features/authentication/models/productmodel.dart';
 import 'package:e_comm_app/features/authentication/models/usermodel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UserRepository extends GetxController {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
   static UserRepository get instance => Get.find();
+
+ 
 
 //Function to save userdata to the fire store
   Future<void> saveUserRecord(UserModel user) async {
@@ -52,6 +58,16 @@ Future<List<ProductModel>> fetchSpecificBrandProducts({int? id}) async {
     }
   }
 
+  Future<String> uploadProfilePicture(XFile profilePic) async{
+     TaskSnapshot reference = await FirebaseStorage.instance
+        .ref()
+        .child('profile_pictures/${DateTime.now().millisecondsSinceEpoch}')
+        .putFile(File(profilePic.path));
+         print(reference.ref.getDownloadURL());
+     return await reference.ref.getDownloadURL();
+       
+  }
+
   // Function to update user data in Firestore.
   Future<void> updateUserDetails(UserModel updatedUser) async {
     try {
@@ -59,7 +75,6 @@ Future<List<ProductModel>> fetchSpecificBrandProducts({int? id}) async {
           .collection("Users")
           .doc(updatedUser.id)
           .set(updatedUser.toJson());
-      // print(updatedUser.id);
     } catch (e) {
       throw 'Something went wrong. Please try again';
     }

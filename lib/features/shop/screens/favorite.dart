@@ -3,8 +3,6 @@ import 'package:e_comm_app/features/shop/screens/upload_products.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
-
 class FavoriteScreen extends StatelessWidget {
   const FavoriteScreen({super.key});
 

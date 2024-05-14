@@ -88,7 +88,7 @@ flutter:
     - assets/images/verification/
     - assets/loadleave-leave.gif
     - assets/images/banner/
-    - assets/images/products/
+    
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

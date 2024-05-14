@@ -22,4 +22,6 @@ class ECColors {
   static Color lightContainer = const Color(0xFFF6F6F6);
   static Color darkContainer = Colors.white.withOpacity(0.1);
 
+
+
 }

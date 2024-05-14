@@ -28,7 +28,7 @@ class SettingScreen extends StatelessWidget {
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(25),
                       bottomRight: Radius.circular(25))),
-              child: Column(
+              child: Column( 
                 children: [
                   ECAppBar(
                     title: Text('Account',
@@ -53,7 +53,7 @@ class SettingScreen extends StatelessWidget {
                             .apply(color: Colors.white.withOpacity(0.9))),
                     trailing: IconButton(
                         onPressed: () {
-                          Get.off(() => ProfileScreen());
+                          Get.to(() => ProfileScreen());
                         },
                         icon: const Icon(Iconsax.edit, color: Colors.white)),
                   ),

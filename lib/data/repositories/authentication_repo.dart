@@ -15,8 +15,6 @@ class AuthenticationRepository extends GetxController {
 
   get get => null;
 
-// Set authentication user data
-//User? get authUser => _auth.currentUser;
 
   @override
   void onReady() {

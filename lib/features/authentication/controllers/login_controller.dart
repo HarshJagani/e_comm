@@ -17,7 +17,7 @@ class LoginController extends GetxController {
     try {
       //Start Loading..
       ECFullScreenLoader.openLoadingDialog(
-          'Logging you in..', ECImageString.appLogo);
+          'Please wait..', ECImageString.appLogo);
 
       //check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
@@ -41,7 +41,10 @@ class LoginController extends GetxController {
       //Redirect
       AuthenticationRepository.instance.screenRedirect();
     } on FirebaseAuthException catch (e) {
-      return ECLoader.errorSnackBar(title: e.code.toString());
+        ECFullScreenLoader.stopLoading();
+      return ECLoader.errorSnackBar(title: e.code.toString().toUpperCase());
     }
+  
+    
   }
 }

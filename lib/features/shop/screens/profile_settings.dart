@@ -5,7 +5,6 @@ import 'package:e_comm_app/features/personalization/controllers/user_controller.
 import 'package:e_comm_app/features/shop/controllers/update_profile_controller.dart';
 import 'package:e_comm_app/navigation_bar.dart';
 import 'package:e_comm_app/utils/constants/colors.dart';
-import 'package:e_comm_app/utils/constants/image_strings.dart';
 import 'package:e_comm_app/utils/constants/size.dart';
 import 'package:e_comm_app/utils/validators/validation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -120,7 +119,7 @@ class ProfileScreen extends StatelessWidget {
                       userName: updateController.userName.text,
                       phoneNumber: updateController.phone.text,
                       profilePicture: updateController.profilePictureUrl?.value ?? '');
-                  updateController.updateUserData(userNewData);
+                      updateController.updateUserData(userNewData);
                 },
                 child: Text('Submit',
                     style: Theme.of(context)

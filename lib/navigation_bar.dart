@@ -1,5 +1,5 @@
 import 'package:e_comm_app/features/authentication/controllers/homepage_controller.dart';
-import 'package:e_comm_app/features/shop/screens/favorite.dart';
+import 'package:e_comm_app/features/authentication/screens/login/login.dart';
 import 'package:e_comm_app/features/shop/screens/home.dart';
 import 'package:e_comm_app/features/shop/screens/setting_screem.dart';
 import 'package:e_comm_app/features/shop/screens/store.dart';
@@ -48,7 +48,7 @@ class NavigationController extends GetxController {
   final screen = [
      HomeScreen(),
      Store(),
-    const FavoriteScreen(),
+    const LoginScreen(),
     const SettingScreen()
   ];
 }

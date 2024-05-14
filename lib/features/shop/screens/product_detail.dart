@@ -16,7 +16,7 @@ class ProductDetailePage extends StatelessWidget {
   final ProductModel product;
   
   @override
-  Widget build(BuildContext context) {                                                                                                                           
+  Widget build(BuildContext context) {                                                                                                      
     return Scaffold(
       bottomNavigationBar: const ECProductBottomNav(),
       body: SingleChildScrollView(

@@ -6,13 +6,18 @@ import 'package:e_comm_app/utils/constants/image_strings.dart';
 import 'package:e_comm_app/utils/popups/full_screen_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UpdateProfileController extends GetxController {
 
   //Initialization and variables.
   GlobalKey<FormState> updateUserDetailesKey = GlobalKey<FormState>();
   UpdateProfileController get instance => Get.find();
+  bool isImageChange = false;
+  XFile? userProfilePicture ;
+  RxString? profilePictureUrl;
   final profileController = Get.put(UserController());
+  final ImagePicker _picker = ImagePicker();
   final userRepository = UserRepository.instance;
   final firstName = TextEditingController(text: UserController.instance.user.value.firstName);
   final lastName = TextEditingController(text: UserController.instance.user.value.lastName);
@@ -20,7 +25,9 @@ class UpdateProfileController extends GetxController {
   final email = TextEditingController(text: UserController.instance.user.value.emailAddress);
   final phone = TextEditingController(text: UserController.instance.user.value.phoneNumber);
   
-  
+
+
+ //Function to update user detales.
   Future<void> updateUserData(UserModel userModel) async {
     //Start Loading
     ECFullScreenLoader.openLoadingDialog(
@@ -39,6 +46,18 @@ class UpdateProfileController extends GetxController {
       return;
     }
 
+   //Upload Profile Picture.
+   if(isImageChange){
+     try {
+      dynamic imageUrl = await userRepository.uploadProfilePicture(userProfilePicture!);
+      profilePictureUrl!.value = imageUrl;
+      
+    } catch (e){
+       throw 'Somthing went wrong';
+    }
+    update();
+   }
+
     //Update user detailes
     try {
       await userRepository.updateUserDetails(userModel);
@@ -52,7 +71,21 @@ class UpdateProfileController extends GetxController {
     // stops the loading
     ECFullScreenLoader.stopLoading();
 
+    isImageChange = false;
+
     // rebuildes the ui when called
     update();
+   
   }
+
+  Future<void> updateUserImage () async {
+   
+    XFile? image;
+    image = await _picker.pickImage(source: ImageSource.gallery);
+   if(image != null){
+    isImageChange = true;
+     userProfilePicture = image;
+   }
+}
+
 }

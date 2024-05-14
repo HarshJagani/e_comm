@@ -19,10 +19,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ProductController>(builder: (controller) {
+
       //Check if the products are fetched from firebase or not
       if (controller.product.isNotEmpty) {
         return Scaffold(body: buildBody());
       } else {
+        
         // If the products are not fetched yet, show a loading indicator
         return const Center(child: CircularProgressIndicator());
       }
